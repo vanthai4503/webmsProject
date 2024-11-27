@@ -1,0 +1,196 @@
+﻿
+@{
+    ViewBag.Title = "IndexGenres";
+    Layout = "~/Views/Shared/userLayout.cshtml";
+    var theloaisong = ViewBag.theloaiSong as List<webnc_api.Models.Baihat> ?? new List<webnc_api.Models.Baihat>();
+    //gán 1 danh sách list cho biến theloaisong
+}
+
+<div class="hero" style="background-image: url(/Assets/User/images/banner/home.jpg);"></div>
+<div class="under-hero container">
+    <div class="section">
+        <div class="section__head">
+            <h3 class="mb-0"><span class="text-primary" id="headingTl">THỂ LOẠI</span></h3>
+            <button id="btnclick" class="btn btn-primary" style="margin-left: 10px;
+             display:none; background-color:#ad20d4;
+             border:none"> RETURN
+            </button>
+        </div>
+        <div class="list list--order">
+            <div class="row g-4">
+                @foreach (var gener in theloaisong)
+                {
+                    <div class="col-xl-3 col-sm-6">
+
+                        <div class="cover cover--round clickTL">
+                            <a href="#" class="cover__image">
+                                <img src="~/Assets/User/images/background/horizontal/2.jpg" alt="@gener.Tenbai">
+                                <div class="cover__image__content">
+                                    <span class="cover__title mb-1 fs-6 text-truncate" id="@gener.IDSong">@gener.Theloai</span>
+                                </div>
+                            </a>
+                        </div>
+
+
+                    </div>
+                 }
+                </div>
+        </div>
+    </div>
+</div>
+<button id="enterSearch" style="display:none"></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        //sự kiện click search
+        $('#search_input').on('keypress', function (e) {
+            if (e.which === 13) { // 13 là mã phím Enter
+                e.preventDefault();
+                let search = $('#search_input').val();
+                getDataSearch(search);
+                $('#enterSearch').click();
+
+            }
+        });
+        $('#clickSearch').click(function () {
+            let search = $('#search_input').val();
+            console.log(typeof search)
+            getDataSearch(search);
+        });
+    })
+    function getDataSearch(tenbaihat) {
+        $.ajax({
+            type: "GET",
+            url: "/api/Song/SearchName",
+            data: {
+                tukhoa: tenbaihat
+            },
+            success: function (repsonse) {
+                console.log(repsonse)
+                searchData(repsonse)
+            },
+            error: function (repsonse) {
+                alert('ko kết nối đc tới server')
+            },
+        })
+    }
+    function searchData(data) {
+        //thay thế các phần tử có trong và cả chính row
+        const theloaiList = $('.row')
+        theloaiList.html('');
+        for (let i = 0; i < data.length; i++) {
+            const item = data[i];
+            const element = `
+
+<div class="list__item clickData" data-song-id="${item.IDSong}" data-song-name="${item.Tenbai}"
+                 data-song-artist="${item.Casi}" data-song-album=""
+                 data-song-cover="${item.HinhAnh}"
+     data-song-url="${item.Linkbaihat}" >
+    <div class="list__cover">
+        <img src="${item.Img}"
+             alt="${item.Tenbai}"/> <a href=""
+                                            class="btn btn-play btn-sm btn-default btn-icon rounded-pill"
+                                            data-play-id="${item.IDSong}" aria-label="Play pause">
+            <i class="ri-play-fill icon-play"></i> <i class="ri-pause-fill icon-pause"></i>
+        </a>
+    </div>
+    <div class="list__content">
+        <a href="#"
+           class="list__title text-truncate">${item.Tenbai}</a>
+        <p class="list__subtitle text-truncate">
+            <a href="#">
+               ${item.Casi}
+            </a>
+        </p>
+    </div>
+    <ul class="list__option">
+        <li> ${item.Thoiluong}</li>
+    </ul>
+</div>
+    `
+            $('#headingTl').text("Kết quả tìm kiếm")
+            $('#btnclick').css("display", "block");
+            theloaiList.append(element);
+        }
+    }
+
+
+    // xóa html và thay thế 
+    function renderData(data) {
+        //thay thế các phần tử có trong và cả chính row
+        const theloaiList = $('.row')
+        theloaiList.html('');
+        for (let i = 0; i < data.length; i++) {
+            const item = data[i];
+            const element = `
+
+     <div class="list__item clickData" data-song-id="${item.IDSong}" data-song-name="${item.Tenbai}"
+                      data-song-artist="${item.Casi}" data-song-album=""
+                      data-song-cover="${item.HinhAnh}"
+          data-song-url="${item.Linkbaihat}" >
+         <div class="list__cover">
+             <img src="${item.Img}"
+                  alt="${item.Tenbai}"/> <a href=""
+                                                 class="btn btn-play btn-sm btn-default btn-icon rounded-pill"
+                                                 data-play-id="${item.IDSong}" aria-label="Play pause">
+                 <i class="ri-play-fill icon-play"></i> <i class="ri-pause-fill icon-pause"></i>
+             </a>
+         </div>
+         <div class="list__content">
+             <a href="#"
+                class="list__title text-truncate">${item.Tenbai}</a>
+             <p class="list__subtitle text-truncate">
+                 <a href="#">
+                    ${item.Casi}
+                 </a>
+             </p>
+         </div>
+         <ul class="list__option">
+             <li> ${item.Thoiluong}</li>
+         </ul>
+     </div>
+        
+         `
+            
+            $('#headingTl').text(`${item.Theloai}`)
+            $('#btnclick').css("display", "block");
+            theloaiList.append(element);
+        }
+
+    }
+    //lấy dữ liệu để đổ dữ liệu
+    function getData(tenTL) {
+        $.ajax({
+            type: "GET",
+            url: "/api/Song/SearchGeners",
+            data: {
+                tenTL: tenTL
+            },
+            success: function (repsonse) {
+                console.log(repsonse)
+                renderData(repsonse)
+            },
+            error: function (repsonse) {
+                alert('ko kết nối đc tới server')
+            },
+        })
+    }
+    // lấy tên bài hát và 
+    $('.clickTL').each(function () {
+        const selected = $(this);
+        selected.click(function () {
+            // tìm trong thẻ selected
+            let tenTL = selected.find('span').text();
+            console.log(tenTL)
+            getData(tenTL);
+        })
+    })
+    $('#btnclick').click(function () {
+        location.reload();
+    })
+
+    //tìm kiếm
+   
+</script>
+

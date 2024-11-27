@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6e3178d4a6c5483299a068198679dbda" Name="Diagram1">
+        <EntityTypeShape EntityType="web_nc_musicModel.Baihat" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="web_nc_musicModel.Chitietlist" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="web_nc_musicModel.Danhsachphat" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="web_nc_musicModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="web_nc_musicModel.FK_Chitietlist_Baihat" ManuallyRouted="false" />
+        <AssociationConnector Association="web_nc_musicModel.FK_Chitietlist_Danhsachphat" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="web_nc_musicModel.User" Width="1.5" PointX="5.375" PointY="5" />
+        <AssociationConnector Association="web_nc_musicModel.FK_Danhsachphat_User" />
+        <AssociationConnector Association="web_nc_musicModel.FK_Baihat_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

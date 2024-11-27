@@ -1,0 +1,163 @@
+﻿@model IEnumerable<webnc_api.Models.Baihat>
+
+@{
+    ViewBag.Title = "IndexSongPublish";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+@*<h2>IndexSong</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tenbai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Casi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thoiluong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Theloai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Linkbaihat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Img)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenbai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Casi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thoiluong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Theloai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Linkbaihat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Img)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IDSong }) |
+                @Html.ActionLink("Details", "Details", new { id=item.IDSong }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IDSong })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/datatables/dataTables.bootstrap.css">
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box ">
+            <div class="box-header">
+                <a href="ThemBai" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Thêm mới</a>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="example" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IDSong)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Tenbai)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Casi)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Thoiluong)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Theloai)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Linkbaihat)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Img)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IDCasi)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Trangthaibaihat)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IDSong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tenbai)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Casi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Thoiluong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Theloai)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Linkbaihat)
+                                </td>
+
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.Img)*@
+                                    <img src="@item.Img" width="30px" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IDCasi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Trangthaibaihat)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.IDSong }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.IDSong })
+                                    @*@Html.ActionLink("Change", "Doitrangthai", new { id = item.IDSong })*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+@section Scripts {
+    <script src="~/Assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables/dataTables.alphabetSearch.js"></script>
+
+}

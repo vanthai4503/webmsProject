@@ -1,0 +1,200 @@
+﻿
+@{
+    ViewBag.Title = "IndexHome";
+    Layout = "~/Views/Shared/userLayout.cshtml";
+    List<webnc_api.Models.Baihat> hotSong = (List<webnc_api.Models.Baihat>)ViewBag.hotSong;
+    List<webnc_api.Models.Baihat> hotBaihat = (List<webnc_api.Models.Baihat>)ViewBag.hotBaihat;
+
+}
+
+<div class="hero" style="background-image: url(/Assets/User/images//banner/home.jpg);"></div>
+<div class="section__head" style="display: none; margin-bottom:60px">
+    <h4 class="search-header">Kết quả tìm kiếm</h4>
+    <button id="btnclick" class="btn btn-primary" style="margin-left: 10px;
+  background-color:#ad20d4;
+ border:none">
+        RETURN
+    </button>
+</div>
+<div class="under-hero container">
+    <div class="list list--order">
+        <div class="section">
+            <div class="section__head">
+                <h3 class="mb-0"><span class="text-primary">KHÁM PHÁ</span></h3>
+            </div>
+                    <div class="swiper-carousel swiper-carousel-button">
+                        <div class="swiper" data-swiper-slides="5" data-swiper-autoplay="true">
+                            <div class="swiper-wrapper">
+                                @{
+                                    for (int i = 0; i < hotSong.Count; i++)
+                                    {
+                                        <div class="swiper-slide">
+                                            <div class="cover cover--round clickData" data-song-id="@hotSong[i].IDSong" data-song-name="@hotSong[i].Tenbai"
+                                                 data-song-artist="@hotSong[i].Casi" data-song-album="Mummy" data-target="songType"
+                                                 data-song-url="@hotSong[i].Linkbaihat" data-song-cover="@hotSong[i].Img">
+                                                <div class="cover__head">
+
+                                                    @*<div class="cover__options dropstart d-inline-flex ms-auto">
+                                                    <a class="dropdown-link" href="javascript:void(0);" role="button"
+                                                        data-bs-toggle="dropdown" aria-label="Cover options"
+                                                        aria-expanded="false"><i class="ri-more-2-fill"></i></a>
+                                                    <ul class="dropdown-menu dropdown-menu-sm">
+                                                        <li>
+                                                            <a class="dropdown-item" href="javascript:void(0);"
+                                                                role="button" data-playlist-id="1">Add to playlist</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>*@
+                                                </div>
+                                                <div class="cover__image">
+                                                    <img src="@hotSong[i].Img"
+                                                         alt="@hotSong[i].Tenbai"> <button type="button"
+                                                                                           class="btn btn-play btn-default btn-icon rounded-pill"
+                                                                                           data-play-id="@hotSong[i].IDSong">
+                                                        <i class="ri-play-fill icon-play"></i> <i class="ri-pause-fill icon-pause"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="cover__foot">
+                                                    <a href="#"
+                                                       class="cover__title text-truncate">@hotSong[i].Tenbai</a>
+                                                    <p class="cover__subtitle text-truncate">
+                                                        <a href="#">@hotSong[i].Casi</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+
+                            </div>
+                        </div>
+                        <div class="swiper-button-prev btn-default rounded-pill"></div>
+                        <div class="swiper-button-next btn-default rounded-pill"></div>
+                    </div>
+            </div>
+
+            <div class="section">
+
+                <div class="list list--lg list--order">
+                    <div class="row">
+                        @{
+                            for (int i = 0; i < hotBaihat.Count; i++)
+                            {
+                                <div class="col-xl-6">
+                                    <div class="list__item clickData" data-song-id="@hotBaihat[i].IDSong" data-song-name="@hotBaihat[i].Tenbai"
+                                         data-song-artist="@hotBaihat[i].Casi" data-song-album=""
+                                         data-song-cover="@hotBaihat[i].Img" data-target="songBaiHat"
+                                         data-song-url="@hotBaihat[i].Linkbaihat">
+                                        <div class="list__cover">
+                                            <img src="@hotBaihat[i].Img"
+                                                 alt="@hotBaihat[i].Tenbai" /> <a href=""
+                                                                                  class="btn btn-play btn-sm btn-default btn-icon rounded-pill"
+                                                                                  data-play-id="@hotBaihat[i].IDSong" aria-label="Play pause">
+                                                <i class="ri-play-fill icon-play"></i> <i class="ri-pause-fill icon-pause"></i>
+                                            </a>
+                                        </div>
+                                        <div class="list__content">
+                                            <a href="#"
+                                               class="list__title text-truncate">@hotBaihat[i].Tenbai</a>
+                                            <p class="list__subtitle text-truncate">
+                                                <a href="#">
+                                                    @hotBaihat[i].Casi
+                                                </a>
+                                            </p>
+                                        </div>
+                                       
+                                    </div>
+
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</div>
+<button id="enterSearch" style="display:none"></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    function renderData(data) {
+        const songList = $('.under-hero')
+        songList.html('');
+        for (let i = 0; i < data.length; i++) {
+            const item = data[i];
+            const element = `
+            <div class="list list--order">
+       <div class="list__item clickData" data-song-id="${item.IDSong}" data-song-name="${item.Tenbai}"
+                 data-song-artist="${item.Casi}" data-song-album=""
+                 data-song-cover="${item.HinhAnh}"
+     data-song-url="${item.Linkbaihat}" >
+    <div class="list__cover">
+        <img src="${item.Img}"
+             alt="${item.Tenbai}"/> <a href=""
+                                            class="btn btn-play btn-sm btn-default btn-icon rounded-pill"
+                                            data-play-id="${item.IDSong}" aria-label="Play pause">
+            <i class="ri-play-fill icon-play"></i> <i class="ri-pause-fill icon-pause"></i>
+        </a>
+    </div>
+    <div class="list__content">
+        <a href="#"
+           class="list__title text-truncate">${item.Tenbai}</a>
+        <p class="list__subtitle text-truncate">
+            <a href="#">
+               ${item.Casi}
+            </a>
+        </p>
+    </div>
+    <ul class="list__option">
+        <li> ${item.Thoiluong}</li>
+    </ul>
+</div>
+   </div>
+    `
+            songList.append(element);
+            $('.section__head').css("display", "block");
+        }
+
+    }
+    function getData(tenbaihat) {
+        $.ajax({
+            type: "GET",
+            url: "/api/Song/SearchName",
+            data: {
+                tukhoa: tenbaihat
+            },
+            success: function (repsonse) {
+                console.log(repsonse)
+                renderData(repsonse)
+            },
+            error: function (repsonse) {
+                alert('ko kết nối đc tới server')
+            },
+        })
+    }
+    $(document).ready(function () {
+        //sự kiện click search
+        $('#search_input').on('keypress', function (e) {
+            if (e.which === 13) { // 13 là mã phím Enter
+                e.preventDefault();
+                let search = $('#search_input').val();
+                console.log(typeof search)
+                getData(search);
+                $('#enterSearch').click();
+
+            }
+        });
+        $('#clickSearch').click(function () {
+            let search = $('#search_input').val();
+            console.log(typeof search)
+            getData(search);
+        });
+    })
+    $('#btnclick').click(function () {
+        location.reload();
+    })
+</script>
+
+

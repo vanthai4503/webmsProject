@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewBag.Title = "IndexSearch";
+    Layout = "~/Views/Shared/userLayout.cshtml";
+}
+
+<style>
+    .search-header {
+        margin: 70px 0 60px 10px;
+    }
+</style>
+<h4 class="search-header">Kết quả tìm kiếm</h4>
+<div class="under-hero container">
+
+    <div class="section">
+        <div class="section__head">
+            <h3 class="mb-0">Bài hát</h3>
+        </div>
+       <div class="list list--order">
+            <div class="row">
+                <div class="col">
+                    <div class="list__item" data-song-id="5" data-song-name="Where is your letter"
+                         data-song-artist="Jina Moore & Lenisa Gory" data-song-album="Letter"
+                         data-song-url="audio/ringtone-5.mp3" data-song-cover="/Assets/images/cover/small/5.jpg">
+                        <div class="list__cover">
+                            <img src="/Assets/images/cover/small/5.jpg"
+                                 alt="Where is your letter"> <a href="javascript:void(0);"
+                                                                class="btn btn-play btn-sm btn-default btn-icon rounded-pill"
+                                                                data-play-id="5" aria-label="Play pause">
+                                <i class="ri-play-fill icon-play"></i> <i class="ri-pause-fill icon-pause"></i>
+                            </a>
+                        </div>
+                        <div class="list__content">
+                            <a href="song-details.html"
+                               class="list__title text-truncate">Where is your letter</a>
+                            <p class="list__subtitle text-truncate">
+                                <a href="artist-details.html">
+                                    Jina Moore
+                                    & Lenisa Gory
+                                </a>
+                            </p>
+                        </div>
+                        <ul class="list__option">
+                            <li>02:36</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+
+    function renderData(data) {
+        const songList = $('.col')
+        songList.html('');
+        for (let i = 0; i < data.length; i++) {
+            const item = data[i];
+            const element = `
+       <div class="list__item clickData" data-song-id="${item.IDSong}" data-song-name="${item.Tenbai}"
+                 data-song-artist="${item.Casi}" data-song-album=""
+                 data-song-cover="${item.HinhAnh}"
+     data-song-url="${item.Linkbaihat}" >
+    <div class="list__cover">
+        <img src="${item.Img}"
+             alt="${item.Tenbai}"/> <a href=""
+                                            class="btn btn-play btn-sm btn-default btn-icon rounded-pill"
+                                            data-play-id="${item.IDSong}" aria-label="Play pause">
+            <i class="ri-play-fill icon-play"></i> <i class="ri-pause-fill icon-pause"></i>
+        </a>
+    </div>
+    <div class="list__content">
+        <a href="#"
+           class="list__title text-truncate">${item.Tenbai}</a>
+        <p class="list__subtitle text-truncate">
+            <a href="#">
+               ${item.Casi}
+            </a>
+        </p>
+    </div>
+    <ul class="list__option">
+        <li> ${item.Thoiluong}</li>
+    </ul>
+</div>
+   
+    `
+            songList.append(element);
+        }
+
+    }
+    function getData(tenbaihat) {
+        $.ajax({
+            type: "GET",
+            url: "/api/Song/SearchName",
+            data: {
+                tukhoa: tenbaihat
+            },
+            success: function (repsonse) {
+                console.log(repsonse)
+                renderData(repsonse)
+            },
+            error: function (repsonse) {
+                alert('ko kết nối đc tới server')
+            },
+        })
+    }
+    $(document).ready(function () {
+        //sự kiện click search
+        $('#search_input').on('keypress', function (e) {
+            if (e.which === 13) { // 13 là mã phím Enter
+
+                let search = $('#search_input').val();
+                console.log(typeof search)
+                getData(search);
+                let outJS = $("body").data("search-results")
+                outJS.newData = ""
+                $("body").data("search-results", outJS);
+
+            }
+        });
+        $('#clickSearch').click(function () {
+            let search = $('#search_input').val();
+            console.log(typeof search)
+            getData(search);
+            return true;
+        });
+    })
+    //document.addEventListener('DOMContentLoaded', function () {
+    //    $('.clickData').click(function () {
+    //        const selected = $(this);
+    //        const cover = selected.data('song-url')
+    //        const img = selected.data('song-cover')
+    //        console.log(img)
+    //        let updateImg = document.getElementById('songImg')
+    //        console.log(updateImg)
+    //        updateImg.src = img
+    //        Amplitude.stop();
+    //        Amplitude.addSong({
+    //            url: cover,
+
+
+    //        });
+    //        Amplitude.play();
+    //    })
+    //})
+</script>
+

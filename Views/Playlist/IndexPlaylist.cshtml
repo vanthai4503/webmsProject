@@ -1,0 +1,283 @@
+﻿
+@{
+    ViewBag.Title = "IndexPlaylist";
+    Layout = "~/Views/Shared/userLayout.cshtml";
+    var idPlaylist = ViewBag.idPlaylist;
+
+}
+<style>
+
+    #bodyshowPlaylist {
+        width: 200px;
+        height: 150px;
+        background-color: antiquewhite;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        opacity: 0;
+        visibility: hidden;
+        margin-left: 30px;
+        transition: opacity 0.9s ease 1s;
+    }
+
+        #bodyshowPlaylist.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+    #btnAddPlaylist{
+
+    }
+
+
+</style>
+<div class="hero" style="background-image: url(/Assets/User/images/banner/home.jpg);"></div>
+<div class="under-hero container">
+    <div class="section">
+        <div class="section__head">
+            <h3 class="mb-0"><span class="text-primary" id="headingTl">DANH SÁCH</span></h3>
+            <button id="btnPlaylist" style="margin-left:10px" class="btn btn-primary">
+                <i class="ri-add-circle-line fs-5"></i> <span style="margin-left: 5px;">Test Playlist</span>
+            </button>
+            <button id="btnShowPlaylist" style="margin-left:10px" class="btn btn-primary">
+                <i class="ri-add-circle-line fs-5"></i> <span style="margin-left: 5px;">Tạo Playlist</span>
+            </button>
+
+            <div id="bodyshowPlaylist">
+                <input type="text" />
+                <button id="btnAddPlaylist" style="margin-left:10px" class="btn btn-primary">
+                    <i class="ri-add-circle-line fs-5"></i> <span style="margin-left: 5px;">Add</span>
+                </button>
+            </div>
+
+            <button id="btnclick" class="btn btn-primary " style="margin-left: 10px;
+             display:none; background-color:#ad20d4;
+             border:none">
+                RETURN
+            </button>
+        </div>
+
+        <div class="list list--order">
+            <div class="row g-4">
+                @foreach (var playlist in idPlaylist)
+                {
+                    <div class="col-xl-3 col-sm-6">
+
+                        <div class="cover cover--round clickTL">
+                            <a href="#" class="cover__image">
+                                <img src="~/Assets/User/images/background/horizontal/4.jpg" alt="">
+                                <div class="cover__image__content">
+                                    <p class="cover__title mb-1 fs-6 text-truncate">
+                                        Playlist
+                                        <span>@playlist.IDlist</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<button id="enterSearch" style="display:none"></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+
+
+
+    //evnet playlist
+    $('#btnPlaylist').click(function () {
+        var result = confirm("Bạn cần tải app để thực hiện tiện ích này nhé!!!");
+        if (result) {
+            var rarFileUrl = "/Assets/uploadFileRar/Net.rar";
+            // Tạo một thẻ a (liên kết) và tự động nhấn nó
+            var link = document.createElement("a");
+            link.href = rarFileUrl;
+            link.download = "Net.rar";
+            document.body.appendChild(link);
+
+            // Remove the link from the document
+            document.body.removeChild(link);
+            // Trigger a click on the link to start the download
+            link.click();
+        }
+        else {
+            alert("Bạn nên tải app nếu muốn sử dụng đầy đủ tính năng");
+        }
+    })
+
+    $('#btnShowPlaylist').click(function () {
+        $('#bodyshowPlaylist').addClass('active');
+        
+    })
+
+    $('#btnAddPlaylist').click(function () {
+        alert("Thêm thành công");
+        $('#bodyshowPlaylist').removeClass('active');
+    })
+
+
+    // xóa html và thay thế
+    function renderData(data) {
+        //thay thế các phần tử có trong và cả chính row
+        const theloaiList = $('.row')
+        theloaiList.html('');
+        for (let i = 0; i < data.length; i++) {
+            const item = data[i];
+            const element = `
+
+     <div class="list__item clickData" data-song-id="${item.IDSong}" data-song-name="${item.Tenbai}"
+                      data-song-artist="${item.Casi}" data-song-album=""
+                      data-song-cover="${item.HinhAnh}"
+          data-song-url="${item.Linkbaihat}" >
+         <div class="list__cover">
+             <img src="${item.Img}"
+                  alt="${item.Tenbai}"/> <a href=""
+                                                 class="btn btn-play btn-sm btn-default btn-icon rounded-pill"
+                                                 data-play-id="${item.IDSong}" aria-label="Play pause">
+                 <i class="ri-play-fill icon-play"></i> <i class="ri-pause-fill icon-pause"></i>
+             </a>
+         </div>
+         <div class="list__content">
+             <a href="#"
+                class="list__title text-truncate">${item.Tenbai}</a>
+             <p class="list__subtitle text-truncate">
+                 <a href="#">
+                    ${item.Casi}
+                 </a>
+             </p>
+         </div>
+         <ul class="list__option">
+             <li> ${item.Thoiluong}</li>
+         </ul>
+     </div>
+
+         `
+
+            $('#btnclick').css("display", "block");
+            theloaiList.append(element);
+        }
+
+    }
+    //lấy dữ liệu để đổ dữ liệu
+    function getData(idPlaylist) {
+        $.ajax({
+            type: "GET",
+            url: "/api/Song/layPlaylistId",
+            data: {
+                idlist: idPlaylist
+            },
+            success: function (repsonse) {
+                console.log(repsonse)
+                renderData(repsonse)
+            },
+            error: function (repsonse) {
+                alert('ko kết nối đc tới server')
+            },
+        })
+    }
+    // lấy tên id của playlist
+    $('.clickTL').each(function () {
+        const selected = $(this);
+        selected.click(function () {
+            // tìm trong thẻ selected
+            let idPlaylist = selected.find('span').text();
+            getData(idPlaylist);
+            for (var number in idPlaylist) {
+                numberText = number.IDSong;
+            }
+            $('#headingTl').text(`Playlist ${numberText}`)
+
+
+
+        })
+    })
+    $('#btnclick').click(function () {
+        location.reload();
+    })
+
+    //tìm kiếm
+    $(document).ready(function () {
+        //sự kiện click search
+        $('#search_input').on('keypress', function (e) {
+            if (e.which === 13) { // 13 là mã phím Enter
+                e.preventDefault();
+                let search = $('#search_input').val();
+                console.log(typeof search)
+                getDataSearch(search);
+                $('#enterSearch').click();
+                //khi dùng .click() có thể gây ra mặc định cho form
+
+            }
+        });
+        $('#clickSearch').click(function () {
+            let search = $('#search_input').val();
+            console.log(typeof search)
+            getDataSearch(search);
+
+        });
+    })
+    function getDataSearch(tenbaihat) {
+        $.ajax({
+            type: "GET",
+            url: "/api/Song/SearchName",
+            data: {
+                tukhoa: tenbaihat
+            },
+            success: function (repsonse) {
+                console.log(repsonse)
+                searchData(repsonse)
+            },
+            error: function (repsonse) {
+                alert('ko kết nối đc tới server')
+            },
+        })
+    }
+    function searchData(data) {
+        //thay thế các phần tử có trong và cả chính row
+        const theloaiList = $('.row')
+        theloaiList.html('');
+        for (let i = 0; i < data.length; i++) {
+            const item = data[i];
+            const element = `
+
+<div class="list__item clickData" data-song-id="${item.IDSong}" data-song-name="${item.Tenbai}"
+                 data-song-artist="${item.Casi}" data-song-album=""
+                 data-song-cover="${item.HinhAnh}"
+     data-song-url="${item.Linkbaihat}" >
+    <div class="list__cover">
+        <img src="${item.Img}"
+             alt="${item.Tenbai}"/> <a href=""
+                                            class="btn btn-play btn-sm btn-default btn-icon rounded-pill"
+                                            data-play-id="${item.IDSong}" aria-label="Play pause">
+            <i class="ri-play-fill icon-play"></i> <i class="ri-pause-fill icon-pause"></i>
+        </a>
+    </div>
+    <div class="list__content">
+        <a href="#"
+           class="list__title text-truncate">${item.Tenbai}</a>
+        <p class="list__subtitle text-truncate">
+            <a href="#">
+               ${item.Casi}
+            </a>
+        </p>
+    </div>
+    <ul class="list__option">
+        <li> ${item.Thoiluong}</li>
+    </ul>
+</div>
+    `
+            $('#headingTl').text("Kết quả tìm kiếm")
+            $('#btnclick').css("display", "block");
+            $('#btnPlaylist').css("display", "none");
+            theloaiList.append(element);
+        }
+    }
+</script>
+

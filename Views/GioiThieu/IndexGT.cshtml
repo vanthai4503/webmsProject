@@ -1,0 +1,258 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IndexGT</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+        /* css chung */
+        .with_30 {
+            width: 30%;
+        }
+
+        .with_60 {
+            width: 60%;
+        }
+
+        .with_20 {
+            width: 20%;
+        }
+
+        .with_12 {
+            width: 12%;
+        }
+
+
+        .with_10 {
+            width: 10%;
+        }
+
+        .active {
+            color: #a845de;
+            background-color: #DCDCDC;
+        }
+
+        .active_body {
+            display: block !important;
+        }
+        /* header */
+        header {
+            background-color: #E6E6FA;
+            width: 100vw;
+            height: 50px;
+            margin-bottom: 30px;
+            position:relative;
+        }
+
+        img {
+            width: 30px;
+            height: 30px;
+        }
+        #logo{
+            position:absolute;
+            top:15px;
+            left:10px
+            
+        }
+
+        /* content */
+        #content {
+            width: 100vw;
+            display: flex;
+        }
+
+        /* điều hướng */
+        .navigation {
+            margin-left: 30px;
+        }
+
+        .navigation-li {
+            list-style-type: none;
+            padding: 8px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .navigation li:hover {
+            cursor: pointer;
+            margin-left: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .navigation li:active {
+            color: #a845de;
+            background-color: #DCDCDC;
+        }
+
+        .content-body {
+            margin-left: 30px;
+            display: none;
+        }
+
+        .heading {
+            margin-bottom: 15px;
+            display: block;
+            font-size: 20px;
+        }
+
+        .content-body_item {
+        }
+
+        .body_item_text {
+        }
+
+        ul .body_item_desc {
+        }
+
+        .body_item_desc li {
+            list-style-type: none;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+            .body_item_desc li img {
+                width: 40%;
+                height: 40%;
+                display: block;
+                margin: 0 auto;
+            }
+
+        .btn_goHome {
+            text-decoration: none;
+            padding: 15px;
+            background-color: #a845de;
+            color: white;
+            border-radius: 4px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <a href="/Home/IndexHome" class="btn_goHome">
+                Trở lại trang chủ
+            </a>
+            <!-- <img src="img/logo.jpg" alt="logo"> -->
+        </div>
+
+    </header>
+
+    <div id="content">
+        <nav class="navigation with_12">
+            <ul>
+                <li class="navigation-li active">GIỚI THIỆU</li>
+                <li class="navigation-li">BẢN QUYỀN</li>
+                <li class="navigation-li">TUYỂN DỤNG</li>
+                <li class="navigation-li">LIÊN HỆ</li>
+            </ul>
+        </nav>
+        <div class="content-body active_body with_60">
+            <span class="heading">GIỚI THIỆU</span>
+            <div class="content-body_item">
+                <ul class="body_item_desc">
+                    <li>
+                        Free Music là người bạn đồng hành lý tưởng cho những người yêu thích âm nhạc, mang đến một trải nghiệm nghe nhạc tuyệt vời
+                        và hoàn toàn miễn phí. Với kho nhạc đa dạng người dùng có thể khám phá và thưởng thức các bản nhạc từ nhiều thể loại.
+                    </li>
+                    <li>Nếu bạn muốn phát hành nhạc trên nền tảng của chúng tôi thì hãy liên hệ qua Email:vanthai4503@gmail.com</li>
+                    <li>Free Music được tạo ra và phát triển bởi 2 nhà sáng tạo Hùng và Thái và đã được ra mắt với phiên bản 1.0</li>
+                    <li>
+                        Nếu người dùng cảm thấy app mang lại trải nghiệm tốt thì có thể ửng hộ để admin tiếp tục phát triển.
+                        Xin cảm ơn.
+                    </li>
+                    <li><img src="~/Assets/User/images/users/qrdonate_hung.jpg" alt="">
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-body with_60">
+            <span class="heading">BẢN QUYỀN</span>
+            <div class="content-body_item">
+                <ul class="body_item_desc">
+                    <li>
+                        Free Music là người bạn đồng hành lý tưởng cho những người yêu thích âm nhạc, mang đến một trải nghiệm nghe nhạc tuyệt vời
+                        và hoàn toàn miễn phí. Với kho nhạc đa dạng người dùng có thể khám phá và thưởng thức các bản nhạc từ nhiều thể loại.
+                    </li>
+                    <li>Nếu bạn muốn phát hành nhạc trên nền tảng của chúng tôi thì hãy liên hệ qua Email:vanthai4503@gmail.com</li>
+                    <li>Free Music được tạo ra và phát triển bởi 2 nhà sáng tạo Hùng và Thái và đã được ra mắt với phiên bản 1.0</li>
+                    <li>
+                        Nếu người dùng cảm thấy app mang lại trải nghiệm tốt thì có thể ửng hộ để admin tiếp tục phát triển.
+                        Xin cảm ơn.
+                    </li>
+                    <li><img src="~/Assets/User/images/users/qrdonate_hung.jpg" alt="">
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-body with_60">
+            <span class="heading">TUYỂN DỤNG</span>
+            <div class="content-body_item">
+                <ul class="body_item_desc">
+                    <li>
+                        Free Music là người bạn đồng hành lý tưởng cho những người yêu thích âm nhạc, mang đến một trải nghiệm nghe nhạc tuyệt vời
+                        và hoàn toàn miễn phí. Với kho nhạc đa dạng người dùng có thể khám phá và thưởng thức các bản nhạc từ nhiều thể loại.
+                    </li>
+                    <li>Nếu bạn muốn phát hành nhạc trên nền tảng của chúng tôi thì hãy liên hệ qua Email:vanthai4503@gmail.com</li>
+                    <li>Free Music được tạo ra và phát triển bởi 2 nhà sáng tạo Hùng và Thái và đã được ra mắt với phiên bản 1.0</li>
+                    <li>
+                        Nếu người dùng cảm thấy app mang lại trải nghiệm tốt thì có thể ửng hộ để admin tiếp tục phát triển.
+                        Xin cảm ơn.
+                    </li>
+                    <li><img src="~/Assets/User/images/users/qrdonate_hung.jpg" alt="">
+                </ul>
+            </div>
+        </div>
+        <div class="content-body with_60">
+            <span class="heading">LIÊN HỆ</span>
+            <div class="content-body_item">
+                <ul class="body_item_desc">
+                    <li>
+                        Free Music là người bạn đồng hành lý tưởng cho những người yêu thích âm nhạc, mang đến một trải nghiệm nghe nhạc tuyệt vời
+                        và hoàn toàn miễn phí. Với kho nhạc đa dạng người dùng có thể khám phá và thưởng thức các bản nhạc từ nhiều thể loại.
+                    </li>
+                    <li>Nếu bạn muốn phát hành nhạc trên nền tảng của chúng tôi thì hãy liên hệ qua Email:vanthai4503@gmail.com</li>
+                    <li>Free Music được tạo ra và phát triển bởi 2 nhà sáng tạo Hùng và Thái và đã được ra mắt với phiên bản 1.0</li>
+                    <li>
+                        Nếu người dùng cảm thấy app mang lại trải nghiệm tốt thì có thể ửng hộ để admin tiếp tục phát triển.
+                        Xin cảm ơn.
+                    </li>
+                    <li><img src="~/Assets/User/images/users/qrdonate_hung.jpg" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <footer></footer>
+
+    <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+
+        const navs = $$('.navigation-li')
+        const bodys = $$('.content-body')
+
+        navs.forEach((nav, index) => {
+            const body = bodys[index];
+            nav.onclick = function () {
+                $('.navigation-li.active').classList.remove('active');
+                $('.content-body.active_body').classList.remove('active_body');
+                this.classList.add('active');
+                body.classList.add('active_body');
+            }
+        })
+
+    </script>
+</body>
+</html>

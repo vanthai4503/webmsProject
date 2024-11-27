@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-language" content="vi" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>AdminLTE 2 | Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="~/Assets/Admin/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Assets/Admin/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/dist/css/skins/_all-skins.min.css">
+    @RenderSection("Styles", required: false)
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+
+            <!-- Logo -->
+            <a href="index2.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>F</b>MS</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b>Music</span>
+            </a>
+
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- Messages: style can be found in dropdown.less-->
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="label label-success">4</span>
+                            </a>
+                        </li>
+                        <!-- Notifications: style can be found in dropdown.less -->
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning">10</span>
+                            </a>
+                        </li>
+                        <!-- Tasks: style can be found in dropdown.less -->
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-flag-o"></i>
+                                <span class="label label-danger">9</span>
+                            </a>
+                        </li>
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/Assets/Admin/images/users/evol.jpg" id="imgAdmin" class="user-image" alt="User Image">
+                                <span id="nameAdmin" class="hidden-xs">Evol Black Hole</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                
+                                
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                   
+                                    <div class="pull-right">
+                                        <button id="btnthoat" class="btn btn-default btn-flat">Sign out</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+                    </ul>
+                </div>
+
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/Assets/Admin/images/users/evol.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Evol Black Hole</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- search form -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">Thanh điều hướng</li>
+                    <li class="active treeview">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>Quản lý danh mục </span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active"><a href="IndexSong"><i class="fa fa-circle-o"></i>Bài hát chưa hát hành</a></li>
+                        </ul>
+                        <ul class="treeview-menu">
+                            <li class="active"><a href="IndexSongPublish"><i class="fa fa-circle-o"></i>Bài hát đã phát hành</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Dashboard
+                    <small>Version 2.4</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <!-- Info boxes -->
+                @RenderBody()
+
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.4.0
+            </div>
+            <strong>Copyright &copy; 2024-2025 <a href="http://almsaeedstudio.com">Music Web</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+
+
+    <script src="~/Assets/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="~/Assets/Admin/bootstrap/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Assets/Admin/plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Assets/Admin/dist/js/app.min.js"></script>
+    <!-- SlimScroll 1.3.0 -->
+    <script src="~/Assets/Admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    @*<script src="~/Assets/Admin/dist/js/pages/dashboard2.js"></script>*@
+    <!-- all scripts-->
+    <!-- AdminLTE for demo purposes -->
+    <script src="~Assets/Admin/dist/js/demo.js"></script>
+    @RenderSection("Scripts", required: false)
+
+<script>
+    const btnthoat = document.getElementById('btnthoat')
+
+    btnthoat.addEventListener("click", function () {
+        var url = "@Url.Action("xoacokki", "SongAdmin")";
+        window.location.href = url ;
+
+    })
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy giá trị từ cookie
+        var tenCookie = getCookie("Ten");
+        var imgCookie = getCookie("Anh");
+        // Kiểm tra xem cookie có tồn tại hay không
+        if (tenCookie) {
+            // Đặt giá trị của cookie vào thẻ span
+            document.getElementById("nameAdmin").textContent = tenCookie;
+
+            // Hiển thị thẻ span
+            document.getElementById("nameAdmin").classList.remove("hidden-xs");
+        }
+        if (imgCookie) {
+            document.getElementById("imgAdmin").src = imgCookie
+        }
+    });
+
+    // Hàm để lấy giá trị của cookie theo tên
+    function getCookie(cookieName) {
+        // Tạo chuỗi bắt đầu bằng tên của cookie
+        var name = cookieName + "=";
+
+        // Giải mã chuỗi cookie
+        var decodedCookie = decodeURIComponent(document.cookie);
+
+        // Tách chuỗi cookie thành mảng các cookie bằng dấu chấm phẩy
+        var cookieArray = decodedCookie.split(';');
+
+        // Duyệt qua từng cookie trong mảng
+        for (var i = 0; i < cookieArray.length; i++) {
+            // Lấy một cookie và loại bỏ các khoảng trắng ở đầu và cuối chuỗi
+            var cookie = cookieArray[i].trim();
+
+            // Kiểm tra xem cookie có bắt đầu bằng tên của chúng ta không
+            if (cookie.indexOf(name) == 0) {
+                // Nếu có, trả về giá trị của cookie (bỏ đi phần tên)
+                return cookie.substring(name.length, cookie.length);
+            }
+
+        } return null;
+    }
+</script>
+</body>
+</html>

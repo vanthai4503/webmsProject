@@ -1,0 +1,107 @@
+﻿@model IEnumerable<webnc_api.Models.Baihat>
+
+@{
+    ViewBag.Title = "IndexSong";
+    Layout = "~/Views/Shared/userLayout.cshtml";
+}
+
+<style>
+    .top{
+        margin-top:100px;
+    }
+
+    .add {
+        width: 86px;
+        height: 39px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background-color: antiquewhite;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="top">
+
+</div>
+<p class="add" id="btnclick">
+    @Html.ActionLink("Create New", "ThemSong")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tenbai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Casi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thoiluong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Theloai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Linkbaihat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuotThich)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.IDCasi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trangthaibaihat)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tenbai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Casi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Thoiluong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Theloai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Linkbaihat)
+        </td>
+        <td>
+            <img src="@item.Img" width="30px" />
+
+            @*@Html.DisplayFor(modelItem => item.Img)*@
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LuotThich)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDCasi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trangthaibaihat)
+        </td>
+        <td >
+            @Html.ActionLink("Edit", "EditSong", new { id = item.IDSong }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IDSong })
+        </td>
+    </tr>
+}
+
+</table>
+
+<script>
+    
+   
+</script>

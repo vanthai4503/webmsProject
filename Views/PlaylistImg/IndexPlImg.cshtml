@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "IndexPlImg";
+    Layout = "~/Views/Shared/userLayout.cshtml";
+    var emails = ViewBag.result;
+}
+
+<div class="hero" style="background-image: url(/Assets/User/images/banner/home.jpg);"></div>
+<div class="under-hero container">
+    <div class="section">
+        <div class="section__head">
+            <h3 class="mb-0"><span class="text-primary" id="headingTl">DANH SÁCH</span></h3>
+            <button id="btnPlaylist" style="margin-left:10px" class="btn btn-primary">
+                <i class="ri-add-circle-line fs-5"></i> <span style="margin-left: 5px;">Thêm Playlist</span>
+            </button>
+            <button id="btnclick" class="btn btn-primary " style="margin-left: 10px;
+             display:none; background-color:#ad20d4;
+             border:none">
+                RETURN
+            </button>
+        </div>
+
+        <div class="list list--order">
+            <div class="row g-4">
+                @foreach (var email in emails)
+                {
+                    <div class="col-xl-3 col-sm-6">
+
+                        <div class="cover cover--round clickTL">
+                            <a href="#" class="cover__image">
+                                <img src="~/Assets/User/images/background/horizontal/4.jpg" alt="">
+                                <div class="cover__image__content">
+                                    <p class="cover__title mb-1 fs-6 text-truncate">
+                                        <span>@email.Email</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<button id="enterSearch" style="display:none"></button>
+

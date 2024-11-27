@@ -1,0 +1,524 @@
+﻿@{
+    var controllerName = ViewBag.ControllerName ?? "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from www.kri8thm.in/html/listen/theme/demo/home.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Nov 2023 14:40:44 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Music Web- Online Music Streaming App Template">
+    <meta name="keywords"
+          content="music template, music app, music web app, responsive music app, music, themeforest, html music app template, css3, html5">
+    <title>Music Web - Online Music Streaming Web</title>
+    <link href="~/Assets/User/images/logos/favicon.png" rel="icon">
+    <link rel="apple-touch-icon" href="~/Assets/User/images/logos/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/Assets/User/images/logos/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Assets/User/images/logos/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="~/Assets/User/images/logos/touch-icon-ipad-retina.png">
+    <link href="~/Assets/User/css/plugins.bundle.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/User/css/styles.bundle.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&amp;display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .iconLike{
+            margin:4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="line_loader"></div>
+    <div id="loader">
+        <div class="loader">
+            <div class="loader__eq mx-auto">
+                <span></span> <span></span> <span></span> <span></span> <span></span>
+                <span></span>
+            </div><span class="loader__text mt-2">Loading</span>
+        </div>
+    </div>
+    <aside id="sidebar">
+        <div class="sidebar-head d-flex align-items-center justify-content-between">
+            <a href="index.html"
+               class="brand external"><img src="~/Assets/User/images/logos/logo.svg" alt="Music Web"> </a><a href="javascript:void(0);" role="button" class="sidebar-toggler" aria-label="Sidebar toggler">
+                <div class="d-none d-lg-block">
+                    <i class="ri-menu-3-line sidebar-menu-1"></i> <i class="ri-menu-line sidebar-menu-2"></i>
+                </div><i class="ri-menu-fold-line d-lg-none"></i>
+            </a>
+        </div>
+        <div class="sidebar-body" data-scroll="true">
+            <nav class="navbar d-block p-0">
+                <ul class="navbar-nav menuList" data-controller-name="@controllerName">
+
+                    <li class="nav-item " data-controller-name="Home">
+                        <a href="#" class="nav-link d-flex align-items-center btnGoToUrl"
+                           data-url="@Url.Action("IndexHome", "Home")" data-controller-name="Home">
+                            <i class="ri-home-4-line fs-5"></i> <span class="ps-3">Trang chủ</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-controller-name="Genres">
+                        <a href="#" class="nav-link d-flex align-items-center  btnGoToUrl"
+                           data-url="@Url.Action("IndexGenres", "Genres")" data-controller-name="Genres">
+                            <i class="ri-disc-line fs-5"></i> <span class="ps-3">Thể loại</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-item" data-controller-name="Playlist">
+                        <a href="#" class="nav-link d-flex align-items-center  btnGoToUrl"
+                           data-url="@Url.Action("IndexPlaylist", "Playlist")" data-controller-name="Playlist">
+                            <i class="ri-radio-2-line fs-5"></i> <span class="ps-3">Danh sách</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-controller-name="UserSong">
+                        <a href="#" class="nav-link d-flex align-items-center  btnGoToUrl"
+                           data-url="@Url.Action("IndexSong", "UserSong")" data-controller-name="UserSong">
+                            <i class="fa-solid fa-user fs-5"></i> <span class="ps-3">User</span>
+                        </a>
+                    </li>
+                    @*<li class="nav-item" data-controller-name="PlaylistImg">
+                            <a href="#" class="nav-link d-flex align-items-center  btnGoToUrl"
+                               data-url="@Url.Action("IndexPlImg", "PlaylistImg")" data-controller-name="PlaylistImg">
+                                <i class="ri-radio-2-line fs-5"></i> <span class="ps-3">Danh sách có ảnh</span>
+                            </a>
+                        </li>*@
+                    <li class="nav-item nav-item--head">
+                        <span class="nav-item--head__text">Not Found</span> <span class="nav-item--head__dots">...</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/NotDefault/IndexDefault" class="nav-link d-flex align-items-center external">
+                            <i class="ri-error-warning-line fs-5"></i> <span class="ps-3">404 Page</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/GioiThieu/IndexGT" class="nav-link d-flex align-items-center external">
+                            <i class="fa-solid fa-tablet fs-5"></i> <span class="ps-3">GioiThieu</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+    </aside>
+    <header id="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="d-flex align-items-center">
+                    <a href="javascript:void(0);" role="button"
+                       class="header-text sidebar-toggler d-lg-none me-3" aria-label="Sidebar toggler">
+                        <i class="ri-menu-3-line"></i>
+                    </a>
+                    <form action="" id="search_form" class="me-3">
+                        <label for="search_input">
+                            <a href=""> <i class="ri-search-2-line text_demo" id="clickSearch"></i></a>
+                        </label> <input type="text"
+                                        placeholder="Nhập thông tin cần tìm..." id="search_input"
+                                        class="form-control form-control-sm">
+                    </form>
+
+                    <div class="d-flex align-items-center">
+
+                        <div class="avatar__image">
+                            <input type="button" value="Log in" id="btndn" />
+                            <img src="" id="emailImg" style="width: 40px; display: none
+                            ;height: 40px; border-radius: 30px" alt="user">
+                        </div>
+                        <span id="emailName" class="ps-2 d-none d-sm-block"></span>
+                        <input style="margin-left:5px" type="button" value="Sign out" id="btnthoat" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <main id="page_content">
+        @RenderBody()
+    </main>
+
+
+    @*Player nghe nhạc*@
+    <div id="player" class="show">
+        <div class="container">
+            <div class="player-container">
+                <div class="player-progress">
+                    <progress class="amplitude-buffered-progress player-progress__bar"
+                              value="0"></progress><progress class="amplitude-song-played-progress player-progress__bar"></progress>
+                    <input type="range" class="amplitude-song-slider player-progress__slider" aria-label="Progress slider">
+                </div>
+                <div class="cover d-flex align-items-center songList">
+                    <div class="cover__image">
+                        <img data-amplitude-song-info="cover_art_url"
+                             src="~/Assets/User/images/cover/small/6.jpg" alt="">
+                    </div>
+                    <div class="cover__content ps-3 d-none d-sm-block">
+                        <a href=""
+                           class="cover__title text-truncate" data-amplitude-song-info="name">Nắng ấm xa dần</a> <a href="" class="cover__subtitle text-truncate"
+                                                                                                                    data-amplitude-song-info="artist">Sơn Tùng</a>
+                    </div>
+                </div>
+                <div class="player-control">
+                    <button type="button"
+                            class="amplitude-prev btn btn-icon" aria-label="Backward">
+                        <i class="ri-skip-back-mini-fill"></i>
+                    </button> <button type="button"
+                                      class="amplitude-play-pause btn btn-icon btn-default rounded-pill" aria-label="Play pause">
+                        <i class="ri-play-fill icon-play"></i>
+                        <i class="ri-pause-fill icon-pause"></i>
+                    </button>
+                    <button type="button" class="amplitude-next btn btn-icon" aria-label="Forward">
+                        <i class="ri-skip-forward-mini-fill"></i>
+                    </button>
+                </div>
+                <div class="player-info">
+                    @*thời lượng*@
+                    <div class="me-4 d-none d-xl-block">
+                        <span class="amplitude-current-minutes"></span>:<span class="amplitude-current-seconds"></span> / <span class="amplitude-duration-minutes"></span>:<span class="amplitude-duration-seconds"></span>
+                    </div>
+                    @*âm lượng*@
+                    <div class="player-volume dropdown d-none d-md-block">
+                        <button class="btn btn-icon"
+                                data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-label="Volume"
+                                aria-expanded="false">
+                            <i class="ri-volume-mute-fill fs-5 d-none"></i> <i class="ri-volume-down-fill fs-5"></i> <i class="ri-volume-up-fill fs-5 d-none"></i>
+                        </button>
+                        <div class="dropdown-menu prevent-click">
+                            <input type="range" class="amplitude-volume-slider"
+                                   value="50" min="0" max="100" aria-label="Volume slider">
+                        </div>
+                    </div>
+                    @* tải về *@
+                    <div class="dropstart d-none d-md-block">
+                        <button class="btn btn-icon" id="btnDownload">
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                    </div>
+
+                    @*thích*@
+                    <div class="bodyLike">
+                        <button class="btn btn-icon" id="btnLike">
+                            <i class="fa-solid fa-thumbs-up iconLike"></i>
+                            <span class="textLike"></span>
+                        </button>
+                    </div>
+
+                    @*lịch sử xem*@
+                    <div class="playlist dropstart me-3">
+                        <button class="btn btn-icon" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside" aria-label="Playlist" aria-expanded="false">
+                            <i class="ri-play-list-fill fs-5"></i>
+                        </button>
+                        <div class="dropdown-menu playlist__dropdown">
+                            <div class="playlist__head d-flex align-items-center justify-content-between">
+                                <h6 class="mb-0">Next Lineup</h6><a id="clear_playlist" class="btn btn-link">Clear</a>
+                            </div>
+                            <div id="playlist" class="list playlist__body" data-scroll="true">
+                                <div class="col-sm-8 col-10 mx-auto mt-5 text-center textplay">
+                                    <i class="ri-music-2-line mb-3"></i>
+                                    <p>No songs, album or playlist are added on lineup.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="backdrop"></div>
+
+    @*Cuối trang*@
+    <footer id="footer">
+        <div class="container">
+            <div class="text-center mb-4">
+                <a href="mailto:vanthai4503@gmail.com"
+                   class="display-5 email">vanthai4503@gmail.com</a>
+            </div>
+            <div class="app-btn-group pt-2">
+                <a href="https://play.google.com/store/games?device=windows&utm_source=apac_med&hl=vi-VN&utm_medium=hasem&utm_content=Oct0121&utm_campaign=Evergreen&pcampaignid=MKT-EDR-apac-vn-1003227-med-hasem-py-Evergreen-Oct0121-Text_Search_BKWS-BKWS%7CONSEM_kwid_43700064211720884_creativeid_525822890288_device_c&gclid=CjwKCAiAxreqBhAxEiwAfGfndHpUrbNrvYccSLq7Yx-cPmmf18wcGA0bb3m-rb1eOysBgy3_UhADEBoC4KYQAvD_BwE&gclsrc=aw.ds" class="btn btn-lg btn-primary">
+                    <div class="btn__wrap">
+                        <i class="ri-google-play-fill"></i> <span class="ms-2">
+                            Google
+                            Play
+                        </span>
+                    </div>
+                </a><a href="https://www.apple.com/vn/app-store/" target="_blank" class="btn btn-lg btn-primary">
+                    <div class="btn__wrap">
+                        <i class="ri-app-store-fill"></i> <span class="ms-2">App Store</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!--<form id="baihatForm" action="/UserSong/ThemSong" method="post">-->
+        <!-- Các input khác của form -->
+        <!--<input type="hidden" id="email" name="IDCasi" />-->
+        <!-- Nút submit hoặc các phần tử khác của form -->
+        <!--<button type="submit">Submit</button>
+    </form>-->
+
+    @*@RenderSection("Scripts")*@
+
+    <style>
+        #emailName {
+            display: none
+        }
+    </style>
+
+    <script src="~/Assets/User/js/plugins.bundle.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>*@
+    <script src="https://cdn.amplitudejs.com/libs/amplitude-6.4.0.min.js"></script>
+    <script src="~/Assets/User/js/scripts.bundle.js"></script>
+    <script>
+
+        //thích
+        let sumText = 0;
+        $('#btnLike').click(function () {
+            sumText = sumText + 1;
+            $('.textLike').text(sumText);
+        })
+
+        //tải về
+
+
+
+        const controllerName = $(`ul.menuList`).data('controllerName');
+        $('ul.menuList li a').each(function (index) {
+            const item = $(this)
+            const itemControllerName = item.data('controllerName');
+            if (itemControllerName === controllerName) {
+                item.addClass('active')
+            }
+
+        });
+
+        $(`.btnGoToUrl`).click(function () {
+            const selected = $(this);
+            const url = selected.data('url');
+            console.log(url);
+            window.location.href = 'https://localhost:44366' + url;
+        })
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            $('.clickData').click(function () {
+                const selected = $(this);
+                const cover = selected.data('song-url')
+                const img = selected.data('song-cover')
+
+                $('#btnDownload').click(function () {
+                    var rarFileUrl = cover;
+                    console.log(rarFileUrl);
+                    // Tạo một thẻ a (liên kết) và tự động nhấn nó
+                    var link = document.createElement("a");
+                    link.href = rarFileUrl;
+                    var replace = "/Assets/audio/";
+                    var fileName = rarFileUrl.replace(replace, "");
+                    link.download = fileName;
+                    document.body.appendChild(link);
+
+                    // Remove the link from the document
+                    document.body.removeChild(link);
+                    // Trigger a click on the link to start the download
+                    link.click();
+
+                })
+
+
+                Amplitude.stop();
+                Amplitude.addSong({
+                    url: cover,
+                    cover_art_url: img
+                });
+                Amplitude.play();
+
+
+            })
+        })
+        function renderID(data) {
+            //thay thế các phần tử có trong và cả chính row
+            const theloaiList = $('.textplay')
+            theloaiList.html('');
+            for (let i = 0; i < data.length; i++) {
+                const item = data[i];
+                const element = `
+
+ <div class="list__item clickData" data-song-id="${item.IDSong}" data-song-name="${item.Tenbai}"
+                  data-song-artist="${item.Casi}" data-song-album=""
+                  data-song-cover="${item.HinhAnh}"
+      data-song-url="${item.Linkbaihat}" >
+     <div class="list__cover">
+         <img src="${item.Img}"
+              alt="${item.Tenbai}"/> <a href=""
+                                             class="btn btn-play btn-sm btn-default btn-icon rounded-pill"
+                                             data-play-id="${item.IDSong}" aria-label="Play pause">
+             <i class="ri-play-fill icon-play"></i> <i class="ri-pause-fill icon-pause"></i>
+         </a>
+     </div>
+     <div class="list__content">
+         <a href="#"
+            class="list__title text-truncate">${item.Tenbai}</a>
+         <p class="list__subtitle text-truncate">
+             <a href="#">
+                ${item.Casi}
+             </a>
+         </p>
+     </div>
+     <ul class="list__option">
+         <li> ${item.Thoiluong}</li>
+     </ul>
+ </div>
+
+     `
+
+
+                theloaiList.append(element);
+            }
+
+        }
+        //lấy dữ liệu để đổ dữ liệu
+        function getID(idSong) {
+            $.ajax({
+                type: "GET",
+                url: "/api/Song/GetBaihat",
+                data: {
+                    id: idSong
+                },
+                success: function (repsonse) {
+                    console.log(repsonse)
+                    renderID(repsonse)
+                },
+                error: function (repsonse) {
+                    alert('ko kết nối đc tới server')
+                },
+            })
+        }
+        // lấy tên bài hát và
+        $('.clickData').each(function () {
+            const selected = $(this);
+            selected.click(function () {
+                // tìm trong thẻ selected
+                let idSong = selected.data('song-id')
+                console.log(idSong)
+                getID(idSong);
+            })
+        })
+
+        //ẩn hiện
+        const emailName = document.getElementById("emailName")
+        const emailImg = document.getElementById("emailImg")
+        const btnthoat = document.getElementById("btnthoat")
+        const btndn = document.getElementById("btndn")
+        //login gg
+        btndn.addEventListener("click", function () {
+
+                // Thay đổi nội dung nút
+            window.location.href = "@Url.Action("LoginwithGG", "Home")";
+
+        });
+
+        btnthoat.addEventListener("click", function () {
+            var url = "@Url.Action("xoacokki", "Home")";
+            window.location.href = url;
+
+        })
+        document.addEventListener("DOMContentLoaded", function () {
+            //xây dựng xong dom thì kích hoạt (các css,js)
+            // Lấy giá trị từ cookie
+            var tenCookie = getCookie("Ten");
+            var imgCookie = getCookie("Anh");
+            var emailCookie = getCookie("email");
+            // Kiểm tra xem cookie có tồn tại hay không
+            if (tenCookie) {
+                // Đặt giá trị của cookie vào thẻ span
+                emailName.textContent = tenCookie;
+            }
+            if (imgCookie) {
+                emailImg.src = imgCookie
+                emailImg.style.display = 'block'
+                btndn.style.display = 'none'
+            }
+            
+        });
+        
+        
+        // Hàm để lấy giá trị của cookie theo tên
+        function getCookie(cookieName) {
+            // Tạo chuỗi bắt đầu bằng tên của cookie
+            var name = cookieName + "=";
+
+            // Giải mã chuỗi cookie
+            var decodedCookie = decodeURIComponent(document.cookie);
+
+            // Tách chuỗi cookie thành mảng các cookie bằng dấu chấm phẩy
+            var cookieArray = decodedCookie.split(';');
+
+            // Duyệt qua từng cookie trong mảng
+            for (var i = 0; i < cookieArray.length; i++) {
+                // Lấy một cookie và loại bỏ các khoảng trắng ở đầu và cuối chuỗi
+                var cookie = cookieArray[i].trim();
+
+                // Kiểm tra xem cookie có bắt đầu bằng tên của chúng ta không
+                if (cookie.indexOf(name) == 0) {
+                    // Nếu có, trả về giá trị của cookie (bỏ đi phần tên)
+                    return cookie.substring(name.length, cookie.length);
+                }
+
+            } return null;
+        }
+
+        // thay địa chỉ local host
+        //window.onload = function () {
+        //    // Get current URL
+        //    var currentUrl = window.location.href;
+
+        //    // Define the query string to remove (modify if needed)
+        //    var queryString = 'https://localhost:44366/?code=4/0ATx3LY7-SucmddolBNdVJUhu75LBz5Ht7w65QRD2bvV-7FSGRNCcG6JQyT347A6rM51jtw&scope=email%20profile%20openid%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&authuser=1&prompt=consent'; // This uses a regular expression to match any value after "code="
+
+        //    // Replace the query string with an empty string
+        //    if (regex.test(currentUrl)) {
+        //        // Remove the query string (including the code parameter)
+        //        var newUrl = currentUrl.replace(queryString, 'https://localhost:44366/');
+
+        //        // Update URL history without reload
+        //        window.history.replaceState(null, null, newUrl);
+        //    }
+        //};
+
+        window.onload = function () {
+            // Get current URL
+            var currentUrl = window.location.href;
+
+            // Define a regular expression to match any URL starting with "https://localhost:44366/?code="
+            var regex = /^https:\/\/localhost:44366\/\?code=.*&/;
+
+            // Check if the URL starts with the pattern
+            if (regex.test(currentUrl)) {
+                // Remove the query string (including the code parameter)
+                var newUrl = currentUrl.replace(/\?.*/, '');
+
+                // Update URL history without reload
+                window.history.replaceState(null, null, newUrl);
+            }
+        };
+    </script>
+</body>
+</html>
+
